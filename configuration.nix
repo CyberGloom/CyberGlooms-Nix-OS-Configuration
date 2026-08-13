@@ -184,6 +184,9 @@
     # cosmic-applet-minimon
     # cosmic-ext-applet-gamemode-status
 
+    # Security & Hacking Tools
+    nmap wireshark ffuf gobuster hydra hashcat netcat ncat
+
     # Apps & Media
     firefox fractal mpv playerctl gimp easyeffects mission-center
     smartmontools yt-dlp songrec lmstudio sillytavern legcord upscayl spotify freetube
