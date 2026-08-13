@@ -178,9 +178,15 @@
     wl-clipboard grim slurp swappy wf-recorder wtype ydotool wlsunset cliphist
     libqalculate tesseract networkmanagerapplet pasystray pavucontrol brightnessctl ddcutil
 
+    # Cosmic Extensions
+    cosmic-ext-applet-caffeine
+    # cosmic-ext-applet-vitals
+    # cosmic-applet-minimon
+    # cosmic-ext-applet-gamemode-status
+
     # Apps & Media
     firefox fractal mpv playerctl gimp easyeffects mission-center
-    smartmontools yt-dlp songrec lmstudio legcord upscayl spotify freetube
+    smartmontools yt-dlp songrec lmstudio sillytavern legcord upscayl spotify freetube
 
     # Gaming Helpers & Utilities
     steam-run mangohud protontricks protonup-qt piper xwayland-satellite prismlauncher heroic lutris
