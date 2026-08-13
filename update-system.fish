@@ -15,6 +15,6 @@ echo "==> Pushing to GitHub..."
 git -C $nixos_dir push; or exit 1
 
 echo "==> Rebuilding NixOS configuration with NH..."
-nh os switch $nixos_dir; or exit 1
+nh os switch $nixos_dir --hostname spectra; or exit 1
 
 echo "==> System update complete and active!"
