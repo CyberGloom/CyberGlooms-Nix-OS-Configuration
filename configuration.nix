@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
 
   imports = [ ./hardware-configuration.nix ];
   system.nixos.label = "Chaotic-Nyx";
@@ -79,16 +79,20 @@
   '';
 
   # =========================================================================
-  # 3. THE COSMIC DESKTOP ENVIRONMENT
+  # 3. THE DESKTOP ENVIRONMENT
   # =========================================================================
+  
+  # Enable Niri
+  programs.niri.enable = true;
+  
   # Enable COSMIC
-  services.desktopManager.cosmic.enable = true;
+  # services.desktopManager.cosmic.enable = true;
 
   # Enable COSMIC Login Manager
   services.displayManager.cosmic-greeter.enable = true;
 
   # Enable System76 Scheduler
-  services.system76-scheduler.enable = true;
+  # services.system76-scheduler.enable = true;
 
   # Global Wayland environmental protocol force targets
   environment.sessionVariables = {
@@ -176,11 +180,11 @@
     # Wayland Utils & Core CLI Tools
     git nano vim wget rsync bc jq cargo uv ripgrep eza kitty fastfetch chafa btop htop starship gum
     wl-clipboard grim slurp swappy wtype ydotool wlsunset cliphist
-    libqalculate tesseract networkmanagerapplet pasystray pavucontrol brightnessctl ddcutil
+    libqalculate tesseract networkmanagerapplet pasystray pavucontrol brightnessctl ddcutil inputs.noctalia.packages.${pkgs.system}.default
     #wf-recorder
 
     # Cosmic Extensions
-    cosmic-ext-applet-caffeine
+    #- cosmic-ext-applet-caffeine
     # cosmic-ext-applet-vitals
     # cosmic-applet-minimon
     # cosmic-ext-applet-gamemode-status
