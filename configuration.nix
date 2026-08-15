@@ -84,12 +84,26 @@
   
   # Enable Niri
   programs.niri.enable = true;
+
+  # Enable Noctalia Greeter
+  imports = [ inputs.noctalia-greeter.nixosModules.default ];
+
+  programs.noctalia-greeter = {
+    enable = true;
+    settings = {
+      # Optional appearance or cursor tweaks
+      cursor = {
+        theme = "Bibata-Modern-Ice";
+        size = 24;
+      };
+    };
+  };
   
   # Enable COSMIC
   # services.desktopManager.cosmic.enable = true;
 
   # Enable COSMIC Login Manager
-  services.displayManager.cosmic-greeter.enable = true;
+  # services.displayManager.cosmic-greeter.enable = true;
 
   # Enable System76 Scheduler
   # services.system76-scheduler.enable = true;
@@ -180,7 +194,7 @@
     # Wayland Utils & Core CLI Tools
     git nano vim wget rsync bc jq cargo uv ripgrep eza kitty fastfetch chafa btop htop starship gum
     wl-clipboard grim slurp swappy wtype ydotool wlsunset cliphist
-    libqalculate tesseract networkmanagerapplet pasystray pavucontrol brightnessctl ddcutil inputs.noctalia.packages.${pkgs.system}.default
+    libqalculate tesseract networkmanagerapplet pasystray pavucontrol brightnessctl ddcutil noctalia-shell
     #wf-recorder
 
     # Cosmic Extensions
