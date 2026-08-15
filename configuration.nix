@@ -85,7 +85,7 @@
   # =========================================================================
   
   # Enable Niri
-  programs.niri.enable = true
+  programs.niri.enable = true;
  
   # Enable Noctalia Greeter
   programs.noctalia-greeter = {
