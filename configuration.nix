@@ -1,6 +1,8 @@
 { config, pkgs, inputs, ... }: {
 
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix
+              inputs.noctalia-greeter.nixosModules.default
+  ];
   system.nixos.label = "Chaotic-Nyx";
   # sudo responisbly  
   # security.sudo.extraConfig = ''
@@ -83,22 +85,19 @@
   # =========================================================================
   
   # Enable Niri
-  programs.niri.enable = true;
-
+  programs.niri.enable = true
+ 
   # Enable Noctalia Greeter
-  imports = [ inputs.noctalia-greeter.nixosModules.default ];
-
   programs.noctalia-greeter = {
     enable = true;
     settings = {
-      # Optional appearance or cursor tweaks
       cursor = {
         theme = "Bibata-Modern-Ice";
         size = 24;
       };
     };
   };
-  
+ 
   # Enable COSMIC
   # services.desktopManager.cosmic.enable = true;
 
