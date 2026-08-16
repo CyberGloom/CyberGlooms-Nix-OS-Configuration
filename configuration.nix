@@ -221,16 +221,6 @@
     zeroad
   ];
 
-  # Temporary Overlay (GNU Grep Check Phase Failure in Upstream Nix Unstable)
-  nixpkgs.overlays = [
-    (self: super: {
-      gnugrep = super.gnugrep.overrideAttrs (_: { doCheck = false; doInstallCheck = false; });     
-      buildPackages = super.buildPackages // {
-        gnugrep = super.buildPackages.gnugrep.overrideAttrs (_: { doCheck = false; doInstallCheck = false; });
-      };
-    })
-  ];
-
   # =========================================================================
   # 8. AUTOMATED HARD DRIVE STORAGE MOUNTS
   # =========================================================================
