@@ -1,8 +1,6 @@
 { config, pkgs, inputs, ... }: {
 
-  imports = [ ./hardware-configuration.nix
-              inputs.noctalia-greeter.nixosModules.default
-  ];
+  imports = [ ./hardware-configuration.nix ];
   system.nixos.label = "Chaotic-Nyx";
   # sudo responisbly  
   # security.sudo.extraConfig = ''
