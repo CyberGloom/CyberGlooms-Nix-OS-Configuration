@@ -152,9 +152,6 @@
     ];
   };
 
-  # Enable OpenRazer drivers and daemon support
-  hardware.openrazer.enable = true;
-
   # Activating LACT Daemon for AMD GPU Control/Undervolting
   systemd.packages = [ pkgs.lact ];
   systemd.services.lactd.wantedBy = [ "multi-user.target" ];
@@ -195,8 +192,6 @@
     git nano vim wget rsync bc jq cargo uv ripgrep eza kitty fastfetch chafa btop htop starship gum
     wl-clipboard grim slurp swappy wtype ydotool wlsunset cliphist
     libqalculate tesseract networkmanagerapplet pasystray pavucontrol brightnessctl ddcutil
-    openrazer-daemon
-    polychromatic 
     # noctalia-shell
     # wf-recorder
 
