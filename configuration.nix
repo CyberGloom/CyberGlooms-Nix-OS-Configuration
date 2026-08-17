@@ -1,12 +1,4 @@
 { config, pkgs, inputs, ... }: {
-  
-    nixpkgs.overlays = [
-    (final: prev: {
-      gnugrep = prev.gnugrep.overrideAttrs (oldAttrs: {
-        doCheck = false; # Disables the test phase entirely for gnugrep
-      });
-    })
-  ];
 
   imports = [ ./hardware-configuration.nix ];
   system.nixos.label = "Chaotic-Nyx";
