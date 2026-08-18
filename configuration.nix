@@ -216,13 +216,11 @@
     zeroad
 
     # Native RetroArch with the SwanStation (DuckStation engine) core baked in
-      (retroarch.override {
-        cores = with libretro; [
-          swanstation
-        ];
-      })
-    ];
-
+    (retroarch.override {
+      cores = with libretro; [
+        swanstation
+      ];
+    })
   ];
 
   # =========================================================================
@@ -244,6 +242,7 @@
     device = "/dev/disk/by-uuid/3a04e374-1647-4edd-aa58-f1780af26d82";
     fsType = "ext4";
     options = [ "nofail" ];
+
   };
 
   fileSystems."/mnt/game-nvme" = {
