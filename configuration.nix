@@ -214,6 +214,15 @@
 
     # Game Repos
     zeroad
+
+    # Native RetroArch with the SwanStation (DuckStation engine) core baked in
+      (retroarch.override {
+        cores = with libretro; [
+          swanstation
+        ];
+      })
+    ];
+
   ];
 
   # =========================================================================
