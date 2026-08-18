@@ -216,8 +216,8 @@
     zeroad
 
     # Native RetroArch with the SwanStation (DuckStation engine) core baked in
-    (pkgs.retroarch.override {
-      cores = with pkgs.libretro; [
+    (retroarch.override {
+      cores = with libretro; [
         swanstation
       ];
     })
