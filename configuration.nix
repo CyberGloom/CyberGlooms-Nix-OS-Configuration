@@ -214,11 +214,6 @@
 
     # Game Repos
     zeroad
-
-    # Native RetroArch with SwanStation core baked in
-    (pkgs.retroarch.withCores (cores: with cores; [
-      swanstation
-    ]))
   ];
 
   # =========================================================================
