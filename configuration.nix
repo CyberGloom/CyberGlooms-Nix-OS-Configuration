@@ -140,6 +140,13 @@
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
 
+  # Native RetroArch with the SwanStation (DuckStation engine) core baked in
+    (pkgs.retroarch.override {
+      cores = with pkgs.libretro; [
+        swanstation
+      ];
+    })
+
   # FHS Escape layer for loose mod managers, libraries, and binaries
   programs.nix-ld = {
     enable = true;
@@ -214,13 +221,6 @@
 
     # Game Repos
     zeroad
-
-    # Native RetroArch with the SwanStation (DuckStation engine) core baked in
-    (retroarch.override {
-      cores = with libretro; [
-        swanstation
-      ];
-    })
   ];
 
   # =========================================================================
