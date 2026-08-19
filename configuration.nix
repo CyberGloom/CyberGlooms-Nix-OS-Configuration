@@ -66,7 +66,6 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
   services.fprintd.enable = true;
-  services.thermald.enable = true;
   services.geoclue2.enable = true;
 
   # Peripheral Hardware Daemons
