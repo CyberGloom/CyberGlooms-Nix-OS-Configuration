@@ -216,31 +216,6 @@
   ];
 
   # =========================================================================
-  # 9. SEARXNG METASEARCH ENGINE
-  # =========================================================================
-  services.searx = {
-    enable = true;
-    # Required for SearXNG to function smoothly
-    redisCreateLocally = true; 
-    
-    # Points to the untracked secret key
-    environmentFile = "/home/kittie/.searxng.env";
-    
-    settings = {
-      server = {
-        # Running locally on port 8888
-        bind_address = "127.0.0.1";
-        port = 8888;
-      };
-      # Optional: set your default engine preferences here
-      search = {
-        safe_search = 0;
-        autocomplete = "duckduckgo";
-      };
-    };
-  };
-
-  # =========================================================================
   # 9. AUTOMATED HARD DRIVE STORAGE MOUNTS
   # =========================================================================
   fileSystems."/mnt/game-1" = {
