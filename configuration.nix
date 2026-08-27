@@ -190,7 +190,7 @@
     # Wayland Utils & Core CLI Tools
     git nano vim wget rsync bc jq cargo uv ripgrep eza kitty fastfetch chafa btop htop starship gum
     wl-clipboard grim slurp swappy wtype ydotool wlsunset cliphist
-    libqalculate tesseract networkmanagerapplet pasystray pavucontrol brightnessctl ddcutil
+    libqalculate tesseract networkmanagerapplet pavucontrol brightnessctl ddcutil
     # noctalia-shell
     # wf-recorder
 
@@ -204,7 +204,7 @@
     nmap wireshark ffuf gobuster hydra hashcat netcat
 
     # Apps & Media
-    firefox fractal mpv playerctl gimp easyeffects mission-center
+    firefox fractal mpv playerctl gimp mission-center
     smartmontools yt-dlp songrec lmstudio sillytavern legcord upscayl spotify freetube
 
     # Gaming Helpers & Utilities
