@@ -77,6 +77,16 @@
   SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0b05", MODE="0666", TAG+="uaccess"
   '';
 
+  services.sillytavern = {
+    enable = true;
+    # Allow connections from your home network
+    # This automatically modifies config.yaml behind the scenes
+    listen = true; 
+  };
+
+  # Open port 8000 in the NixOS firewall so your phone can reach it
+  networking.firewall.allowedTCPPorts = [ 8000 ];
+
   # =========================================================================
   # 3. THE DESKTOP ENVIRONMENT
   # =========================================================================
