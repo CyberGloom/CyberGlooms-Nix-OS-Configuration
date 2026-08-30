@@ -81,7 +81,8 @@
     enable = true;
     # Allow connections from your home network
     # This automatically modifies config.yaml behind the scenes
-    listen = true; 
+    listen = true;
+    dataDIR = "/var/lib/sillytavern"; 
   };
 
   # Open port 8000 in the NixOS firewall so your phone can reach it
