@@ -207,7 +207,7 @@
     nmap wireshark ffuf gobuster hydra hashcat netcat
 
     # Apps & Media
-    firefox fractal mpv playerctl gimp mission-center
+    firefox fractal mpv playerctl gimp mission-center qbittorrent
     smartmontools yt-dlp songrec lmstudio sillytavern legcord upscayl spotify freetube
 
     # Gaming Helpers & Utilities
