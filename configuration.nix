@@ -80,6 +80,10 @@
   # Open port 8000 in the NixOS firewall so your phone can reach it
   networking.firewall.allowedTCPPorts = [ 8000 ];
 
+  #Quassel Core
+  services.quassel.enable = true;
+  services.quassel.interfaces = [ "127.0.0.1" ];
+
   # =========================================================================
   # 3. THE DESKTOP ENVIRONMENT
   # =========================================================================
@@ -192,7 +196,7 @@
   environment.systemPackages = with pkgs; [
     # Wayland Utils & Core CLI Tools
     git nano vim wget rsync bc jq cargo uv ripgrep eza kitty fastfetch chafa btop htop starship gum
-    wl-clipboard grim slurp swappy wtype ydotool wlsunset cliphist irssi
+    wl-clipboard grim slurp swappy wtype ydotool wlsunset cliphist
     libqalculate tesseract networkmanagerapplet pavucontrol brightnessctl ddcutil
     # noctalia-shell
     # wf-recorder
