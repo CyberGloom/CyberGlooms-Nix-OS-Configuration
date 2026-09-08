@@ -196,7 +196,7 @@
   environment.systemPackages = with pkgs; [
     # Wayland Utils & Core CLI Tools
     git nano vim wget rsync bc jq cargo uv ripgrep eza kitty fastfetch chafa btop htop starship gum
-    wl-clipboard grim slurp swappy wtype ydotool wlsunset cliphist
+    wl-clipboard grim slurp swappy wtype ydotool wlsunset cliphist quasselClient
     libqalculate tesseract networkmanagerapplet pavucontrol brightnessctl ddcutil
     # noctalia-shell
     # wf-recorder
