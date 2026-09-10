@@ -216,7 +216,7 @@
 
     # Gaming Helpers & Utilities
     steam-run mangohud protontricks protonup-qt piper xwayland-satellite prismlauncher heroic lutris
-    xemu lact
+    xemu dolphin-emu lact
 
     # Game Repos
     zeroad
