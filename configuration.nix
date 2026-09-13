@@ -208,7 +208,7 @@
     # cosmic-ext-applet-gamemode-status
 
     # Security & Hacking Tools
-    nmap wireshark ffuf gobuster hydra hashcat netcat
+    nmap wireshark ffuf gobuster hashcat netcat
 
     # Apps & Media
     firefox fractal mpv playerctl gimp mission-center qbittorrent
