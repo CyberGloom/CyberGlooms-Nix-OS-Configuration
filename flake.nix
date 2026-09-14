@@ -6,10 +6,11 @@
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 
-  outputs = { self, nixpkgs, chaotic, ... }@inputs: {
+  outputs = inputs@{ self, nixpkgs, chaotic, ... }: {
     nixosConfigurations = {
       spectra = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = [
           ./hardware-configuration.nix
           ./configuration.nix
