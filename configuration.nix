@@ -49,6 +49,7 @@
      pkiBundle = "/var/lib/sbctl";
   };
 
+  boot.loader.grub.enable = lib.mkForce false;
   boot.loader.timeout = 300; 
   boot.loader.systemd-boot.enable = lib.mkForce true;
   boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
