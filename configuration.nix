@@ -34,15 +34,6 @@
   # 2. CORE SYSTEM & HARDWARE
   # =========================================================================
   
-  #boot.loader = {
-  # Enable GRUB
-  #grub = {
-      #enable = true;
-      #device = "nodev"; 
-      #efiSupport = true;
-      #useOSProber = true; 
-      #enableCryptodisk = false;
-
   # Enable Lanzaboote
   boot.lanzaboote = {
      enable = true;
