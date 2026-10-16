@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, inputs, lib, ... }: {
 
   imports = [ ./hardware-configuration.nix ];
   system.nixos.label = "Chaotic-Nyx";
