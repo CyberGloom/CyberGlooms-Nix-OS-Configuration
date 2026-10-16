@@ -47,8 +47,6 @@
   boot.lanzaboote = {
      enable = true;
      pkiBundle = "/var/lib/sbctl";
- 
-    };
   };
 
   boot.loader.timeout = 300; 
