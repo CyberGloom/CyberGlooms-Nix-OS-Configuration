@@ -34,7 +34,7 @@
   # 2. CORE SYSTEM & HARDWARE
   # =========================================================================
   
-  boot.loader = {
+  #boot.loader = {
   # Enable GRUB
   #grub = {
       #enable = true;
@@ -44,7 +44,7 @@
       #enableCryptodisk = false;
 
   # Enable Lanzaboote
-  lanzaboote = {
+  boot.lanzaboote = {
      enable = true;
      pkiBundle = "/var/lib/sbctl";
  
