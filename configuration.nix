@@ -36,17 +36,24 @@
   
   boot.loader = {
   # Enable GRUB
-  grub = {
-      enable = true;
-      device = "nodev"; 
-      efiSupport = true;
-      useOSProber = true; 
-      enableCryptodisk = false; 
+  #grub = {
+      #enable = true;
+      #device = "nodev"; 
+      #efiSupport = true;
+      #useOSProber = true; 
+      #enableCryptodisk = false;
+
+  # Enable Lanzaboote
+  lanzaboote = {
+     enable = true;
+     pkiBundle = "/var/lib/sbctl";
+ 
     };
   };
 
   boot.loader.timeout = 300; 
-  boot.loader.systemd-boot.enable = false;
+  boot.loader.systemd-boot.enable = lib.mkForce true;
+  boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "Spectra";
   networking.networkmanager.enable = true;
@@ -208,7 +215,7 @@
     # cosmic-ext-applet-gamemode-status
 
     # Security & Hacking Tools
-    nmap wireshark ffuf gobuster hashcat netcat
+    nmap wireshark ffuf gobuster hashcat netcat sbctl
 
     # Apps & Media
     firefox fractal mpv playerctl gimp mission-center qbittorrent
