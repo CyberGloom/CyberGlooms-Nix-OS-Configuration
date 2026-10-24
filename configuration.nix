@@ -48,19 +48,27 @@
         helpHidden = true;
       };
 
-      backdrop = "0d0914"; # Deep purple background
-
-      graphicalTerminal = {
-        background = "000d0914"; # TTRRGGBB format (00 = fully opaque)
-        foreground = "c5b4e3";   # Soft lavender text
-        palette = "0d0914;ff2a8d;ff2a8d;ff2a8d;b026ff;b026ff;b026ff;c5b4e3"; # RRGGBB 8-color array
-      };
+      backdrop = "0d0914"; # Pure dark purple hex
     };
+
+    # Direct Limine overrides to clear margins, hide default banner, and style UI
+    extraConfig = ''
+      # Remove gray margins and force solid dark purple background everywhere
+      BACKGROUND_COLOR: 0d0914
+      MARGIN: 0
+      
+      # Hide top status/logo header entirely
+      VERBOSE: no
+
+      # Theme colors
+      TEXT_COLOR: c5b4e3
+      HIGHLIGHT_COLOR: ff2a8d
+    '';
 
     extraEntries = ''
       /Windows Boot Manager
       protocol: efi
-      path: guid(E68E-226E):/EFI/Microsoft/Boot/bootmgfw.efi
+      path: guid(e740af3d-d077-4710-b8ab-d4a4bd0494f0):/EFI/Microsoft/Boot/bootmgfw.efi
     '';
   };
   
