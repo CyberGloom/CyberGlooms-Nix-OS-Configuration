@@ -34,18 +34,19 @@
   # 2. CORE SYSTEM & HARDWARE
   # =========================================================================
   
-  # Enable Lanzaboote
-  boot.lanzaboote = {
-     enable = true;
-     pkiBundle = "/var/lib/sbctl";
-  };
-
-  boot.loader.grub.enable = lib.mkForce false;
-  boot.loader.external.enable = lib.mkForce false;
-  boot.loader.timeout = 300; 
-  boot.loader.systemd-boot.enable = lib.mkForce true;
-  boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
+  #Limine
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.limine = {
+    enable = true;
+    secureBoot.enable = true;
+    maxGenerations = 10;
+    extraEntries = ''
+      /Windows Boot Manager
+      protocol: efi
+      path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+    '';
+  };
+  
   networking.hostName = "Spectra";
   networking.networkmanager.enable = true;
   time.timeZone = "America/Chicago";
