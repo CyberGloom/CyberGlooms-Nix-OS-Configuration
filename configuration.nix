@@ -35,38 +35,27 @@
   # =========================================================================
   
   #Limine
-boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.limine = {
     enable = true;
     secureBoot.enable = true;
     maxGenerations = 10;
 
-    # Configure style sub-options cleanly
     style = {
-      # Custom branding header text
-      branding = "CYBERGLOOM // SPECTRA";
+      interface = {
+        branding = "CYBERGLOOM // SPECTRA";
+        resolution = "2560x1440";
+        helpHidden = true;
+      };
+
+      backdrop = "0d0914"; # Deep purple background
+
+      graphicalTerminal = {
+        background = "000d0914"; # TTRRGGBB format (00 = fully opaque)
+        foreground = "c5b4e3";   # Soft lavender text
+        palette = "0d0914;ff2a8d;ff2a8d;ff2a8d;b026ff;b026ff;b026ff;c5b4e3"; # RRGGBB 8-color array
+      };
     };
-
-    # Raw Limine key-value configuration overrides
-    extraConfig = ''
-      # Graphics & Resolution
-      INTERFACE_GRAPHICAL: yes
-      INTERFACE_RESOLUTION: 2560x1440
-      MARGIN: 120
-      INTERFACE_HELP_HIDDEN: yes
-
-      # Color Index Mapping
-      COLOR_0: 0d0914
-      COLOR_1: ff2a8d
-      COLOR_5: b026ff
-      COLOR_7: c5b4e3
-
-      # Assign theme elements
-      THEME_BACKGROUND: 000000
-      THEME_FOREGROUND: 5
-      THEME_HIGHLIGHT_BACKGROUND: 1
-      THEME_HIGHLIGHT_FOREGROUND: 0
-    '';
 
     extraEntries = ''
       /Windows Boot Manager
