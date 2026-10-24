@@ -35,41 +35,46 @@
   # =========================================================================
   
   #Limine
-  boot.loader.efi.canTouchEfiVariables = true;
+ boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.limine = {
     enable = true;
     secureBoot.enable = true;
     maxGenerations = 10;
 
+    # Strips out the default NixOS banner logo completely
+    style = lib.mkForce "";
+
     extraConfig = ''
-      # Graphics & Resolution
-      GRAPHICS: yes
+      # Render Mode & Clean Margins
+      INTERFACE_GRAPHICAL: yes
       INTERFACE_RESOLUTION: 2560x1440
+      MARGIN: 120
       
-      # Layout & Margins
-      MARGIN: 100
-      MARGIN_GRADIENT: 0
-      
-      # Aesthetic Palette (Hex without #)
-      # Background / Text / Highlights
-      INTERFACE_BRANDING: CyberGloom // Spectra NixOS
-      INTERFACE_BRANDING_COLOR: 0
-      
-      # Colors: 0=Black, 1=Red/Pink, 2=Green, 3=Yellow, 4=Blue, 5=Magenta/Purple, 6=Cyan, 7=White
-      # Modern Limine RRGGBB Palette Overrides
-      THEME_BACKGROUND: 0d0914
-      THEME_FOREGROUND: c5b4e3
-      THEME_MARGIN_BACKGROUND: 0d0914
-      
-      # Highlight Box & Selected Entry
-      THEME_HIGHLIGHT_BACKGROUND: 8a1f7c
-      THEME_HIGHLIGHT_FOREGROUND:ffffff
+      # Branding Header
+      INTERFACE_BRANDING: CYBERGLOOM // SPECTRA
+      INTERFACE_BRANDING_COLOR: 5
+      INTERFACE_HELP_HIDDEN: yes
+
+      # Color Index Mapping (0-7 ANSI override)
+      # 0: Background (Dark Purple-Black)
+      # 5: Magenta/Purple (Main text)
+      # 1: Pink/Red (Selection)
+      COLOR_0: 0d0914
+      COLOR_1: ff2a8d
+      COLOR_5: b026ff
+      COLOR_7: c5b4e3
+
+      # Assign theme elements to overridden colors
+      THEME_BACKGROUND: 000000
+      THEME_FOREGROUND: 5
+      THEME_HIGHLIGHT_BACKGROUND: 1
+      THEME_HIGHLIGHT_FOREGROUND: 0
     '';
 
     extraEntries = ''
       /Windows Boot Manager
       protocol: efi
-      path: uuid(E68E-226E):/EFI/Microsoft/Boot/bootmgfw.efi
+      path: guid(E68E-226E):/EFI/Microsoft/Boot/bootmgfw.efi
     '';
   };
   
