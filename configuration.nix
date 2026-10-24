@@ -43,7 +43,7 @@
     extraEntries = ''
       /Windows Boot Manager
       protocol: efi
-      path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+      path: uuid(E68E-226E):/EFI/Microsoft/Boot/bootmgfw.efi
     '';
   };
   
