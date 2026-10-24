@@ -40,6 +40,32 @@
     enable = true;
     secureBoot.enable = true;
     maxGenerations = 10;
+
+    styleConfig = ''
+      # Graphics & Resolution
+      GRAPHICS: yes
+      INTERFACE_RESOLUTION: 2560x1440
+      
+      # Layout & Margins
+      MARGIN: 100
+      MARGIN_GRADIENT: 0
+      
+      # Aesthetic Palette (Hex without #)
+      # Background / Text / Highlights
+      INTERFACE_BRANDING: CyberGloom // Spectra NixOS
+      INTERFACE_BRANDING_COLOR: 0
+      
+      # Colors: 0=Black, 1=Red/Pink, 2=Green, 3=Yellow, 4=Blue, 5=Magenta/Purple, 6=Cyan, 7=White
+      # Modern Limine RRGGBB Palette Overrides
+      THEME_BACKGROUND: 0d0914
+      THEME_FOREGROUND: c5b4e3
+      THEME_MARGIN_BACKGROUND: 0d0914
+      
+      # Highlight Box & Selected Entry
+      THEME_HIGHLIGHT_BACKGROUND: 8a1f7c
+      THEME_HIGHLIGHT_FOREGROUND:ffffff
+    '';
+
     extraEntries = ''
       /Windows Boot Manager
       protocol: efi
