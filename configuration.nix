@@ -35,36 +35,33 @@
   # =========================================================================
   
   #Limine
- boot.loader.efi.canTouchEfiVariables = true;
+boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.limine = {
     enable = true;
     secureBoot.enable = true;
     maxGenerations = 10;
 
-    # Strips out the default NixOS banner logo completely
-    style = lib.mkForce "";
+    # Configure style sub-options cleanly
+    style = {
+      # Custom branding header text
+      branding = "CYBERGLOOM // SPECTRA";
+    };
 
+    # Raw Limine key-value configuration overrides
     extraConfig = ''
-      # Render Mode & Clean Margins
+      # Graphics & Resolution
       INTERFACE_GRAPHICAL: yes
       INTERFACE_RESOLUTION: 2560x1440
       MARGIN: 120
-      
-      # Branding Header
-      INTERFACE_BRANDING: CYBERGLOOM // SPECTRA
-      INTERFACE_BRANDING_COLOR: 5
       INTERFACE_HELP_HIDDEN: yes
 
-      # Color Index Mapping (0-7 ANSI override)
-      # 0: Background (Dark Purple-Black)
-      # 5: Magenta/Purple (Main text)
-      # 1: Pink/Red (Selection)
+      # Color Index Mapping
       COLOR_0: 0d0914
       COLOR_1: ff2a8d
       COLOR_5: b026ff
       COLOR_7: c5b4e3
 
-      # Assign theme elements to overridden colors
+      # Assign theme elements
       THEME_BACKGROUND: 000000
       THEME_FOREGROUND: 5
       THEME_HIGHLIGHT_BACKGROUND: 1
