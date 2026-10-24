@@ -41,7 +41,7 @@
     secureBoot.enable = true;
     maxGenerations = 10;
 
-    styleConfig = ''
+    extraConfig = ''
       # Graphics & Resolution
       GRAPHICS: yes
       INTERFACE_RESOLUTION: 2560x1440
