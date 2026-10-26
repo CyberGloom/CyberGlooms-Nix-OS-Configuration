@@ -160,7 +160,7 @@
   users.users.kittie = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "video" "input" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "input" "openrazer" ];
   };
 
   # =========================================================================
@@ -169,6 +169,8 @@
   programs.steam.enable = true;
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
+
+  hardware.openrazer.enable = true;
 
   # FHS Escape layer for loose mod managers, libraries, and binaries
   programs.nix-ld = {
@@ -237,6 +239,7 @@
     # Apps & Media
     firefox fractal mpv playerctl gimp mission-center qbittorrent
     smartmontools yt-dlp songrec lmstudio sillytavern legcord upscayl spotify freetube
+    polychromatic
 
     # Gaming Helpers & Utilities
     steam-run mangohud protontricks protonup-qt piper xwayland-satellite prismlauncher heroic lutris
