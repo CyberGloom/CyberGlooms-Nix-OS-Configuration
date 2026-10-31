@@ -45,11 +45,11 @@
       path: guid(8ed770bd-a97e-49cc-8fc6-dbf6fc8aede9):/EFI/Microsoft/Boot/bootmgfw.efi
     '';
   };
-  
+
   networking.hostName = "Spectra";
   networking.networkmanager.enable = true;
   time.timeZone = "America/Chicago";
-  
+
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
   hardware.cpu.intel.updateMicrocode = true;
@@ -78,7 +78,7 @@
   # =========================================================================
   # 3. THE DESKTOP ENVIRONMENTS (KDE Added, COSMIC Active)
   # =========================================================================
-  
+
   # Enable KDE Plasma 6 & SDDM Wayland Greeter alongside COSMIC for safe migration
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = {
@@ -100,7 +100,7 @@
     jack.enable = true;
   };
 
-  # Low-latency KWin configs, Krohnkite, and shortcuts
+  # Low-latency KWin configs, Klassy window rules, Krohnkite, and shortcuts
   environment.etc = {
     "xdg/kwinrc".text = ''
       [Compositing]
@@ -114,6 +114,12 @@
       krohnkiteEnabled=true
       slidingpopupsEnabled=false
       startupfeedbackEnabled=false
+
+      [Windows]
+      BorderlessMaximizedWindows=true
+
+      [org.kde.kdecoration2]
+      theme=__aurorae__svg__klassy
     '';
 
     "xdg/baloofilerc".text = ''
@@ -146,7 +152,7 @@
 
       [org.kde.kitty.desktop]
       _launch=Meta+Return,none,Launch Kitty
-    '';
+    ''';
   };
 
   environment.etc."xdg/autostart/enable-krohnkite.desktop".text = ''
@@ -183,12 +189,12 @@
 
   systemd.packages = [ pkgs.lact ];
   systemd.services.lactd.wantedBy = [ "multi-user.target" ];
-  
+
   boot.kernelParams = [ "amdgpu.freesync_video=1" "amdgpu.sg_display=0" "amdgpu.ppfeaturemask=0xffffffff" ];
   boot.extraModprobeConfig = "options amdgpu dc=1";
 
   services.flatpak.enable = true;
-  
+
   programs.nh = {
     enable = true;
     clean.enable = true;
@@ -217,6 +223,7 @@
     wl-clipboard grim slurp swappy wtype ydotool wlsunset cliphist quasselClient openssl
     libqalculate tesseract networkmanagerapplet pavucontrol brightnessctl ddcutil
 
+    klassy # Window decoration engine for borderless/styled windows
     kdePackages.krohnkite
     kdePackages.plasma-integration
 
