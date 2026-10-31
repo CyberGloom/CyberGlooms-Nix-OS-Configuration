@@ -100,7 +100,7 @@
     jack.enable = true;
   };
 
-  # Low-latency KWin configs, Klassy window rules, Krohnkite, and shortcuts
+# Low-latency KWin configs, Klassy window rules, and Baloo disable
   environment.etc = {
     "xdg/kwinrc".text = ''
       [Compositing]
@@ -127,7 +127,20 @@
       Indexing-Enabled=false
     '';
 
-    "xdg/kglobalshortcutsrc".text = ''
+    "xdg/autostart/enable-krohnkite.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=Enable Krohnkite
+      Exec=qdbus org.kde.KWin /KWin org.kde.KWin.reconfigure
+      OnlyShowIn=KDE;
+    '';
+  };
+
+  # Force-deploy declarative keybindings directly to the user profile database
+  system.activationScripts.kdeshortcuts = {
+    text = ''
+      install -d -m 700 -o kittie -g users /home/kittie/.config
+      cat << 'EOF' > /home/kittie/.config/kglobalshortcutsrc
       [kwin]
       Window Focus Down=Meta+J,none,Switch to Window Below
       Window Focus Left=Meta+H,none,Switch to Window Left
@@ -152,14 +165,9 @@
 
       [org.kde.kitty.desktop]
       _launch=Meta+Return,none,Launch Kitty
-    '';
-
-    "xdg/autostart/enable-krohnkite.desktop".text = ''
-      [Desktop Entry]
-      Type=Application
-      Name=Enable Krohnkite
-      Exec=qdbus org.kde.KWin /KWin org.kde.KWin.reconfigure
-      OnlyShowIn=KDE;
+      EOF
+      chown kittie:users /home/kittie/.config/kglobalshortcutsrc
+      chmod 600 /home/kittie/.config/kglobalshortcutsrc
     '';
   };
 
