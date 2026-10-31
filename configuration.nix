@@ -109,31 +109,15 @@
   services.quassel.interfaces = [ "127.0.0.1" ];
 
   # =========================================================================
-  # 3. THE DESKTOP ENVIRONMENT
+  # 3. THE DESKTOP ENVIRONMENT (KDE PLASMA 6)
   # =========================================================================
   
-  # Enable Niri
-  # programs.niri.enable = true;
- 
-  # Enable Noctalia Greeter
-  # programs.noctalia-greeter = {
-  #  enable = true;
-  #  settings = {
-  #    cursor = {
-  #      theme = "Bibata-Modern-Ice";
-  #      size = 24;
-  #     };
-  #   };
-  # };
- 
-  # Enable COSMIC
-  services.desktopManager.cosmic.enable = true;
-
-  # Enable COSMIC Login Manager
-  services.displayManager.cosmic-greeter.enable = true;
-
-  # Enable System76 Scheduler
-  services.system76-scheduler.enable = true;
+  # Enable KDE Plasma 6 & SDDM Wayland Greeter
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
 
   # Global Wayland environmental protocol force targets
   environment.sessionVariables = {
@@ -150,6 +134,67 @@
     pulse.enable = true;
     jack.enable = true;
   };
+
+  # Declarative Low-Latency & Tiling Defaults via /etc/xdg
+  environment.etc = {
+    # KWin Latency, Performance, Animation Speed (0 = Instant), & Krohnkite Tiling
+    "xdg/kwinrc".text = ''
+      [Compositing]
+      AllowTearing=true
+      AnimationSpeed=0
+      LatencyPolicy=ExtremelyLow
+
+      [Plugins]
+      blurEnabled=false
+      contrastEnabled=false
+      krohnkiteEnabled=true
+      slidingpopupsEnabled=false
+      startupfeedbackEnabled=false
+    '';
+
+    # Disable Baloo File Indexing to free up background CPU cycles
+    "xdg/baloofilerc".text = ''
+      [Basic Settings]
+      Indexing-Enabled=false
+    '';
+
+    # Custom Tiling Shortcuts (Super + H/J/K/L & Super + Return)
+    "xdg/kglobalshortcutsrc".text = ''
+      [kwin]
+      Window Focus Down=Meta+J,none,Switch to Window Below
+      Window Focus Left=Meta+H,none,Switch to Window Left
+      Window Focus Right=Meta+L,none,Switch to Window Right
+      Window Focus Up=Meta+K,none,Switch to Window Above
+      Window Move Down=Meta+Shift+J,none,Move Window Down
+      Window Move Left=Meta+Shift+H,none,Move Window Left
+      Window Move Right=Meta+Shift+L,none,Move Window Right
+      Window Move Up=Meta+Shift+K,none,Move Window Up
+      Window Close=Meta+Q,none,Close Window
+      Toggle Floating=Meta+Shift+Space,none,Toggle Window Floating
+
+      Switch to Desktop 1=Meta+1,none,Switch to Desktop 1
+      Switch to Desktop 2=Meta+2,none,Switch to Desktop 2
+      Switch to Desktop 3=Meta+3,none,Switch to Desktop 3
+      Switch to Desktop 4=Meta+4,none,Switch to Desktop 4
+
+      Window to Desktop 1=Meta+Shift+1,none,Window to Desktop 1
+      Window to Desktop 2=Meta+Shift+2,none,Window to Desktop 2
+      Window to Desktop 3=Meta+Shift+3,none,Window to Desktop 3
+      Window to Desktop 4=Meta+Shift+4,none,Window to Desktop 4
+
+      [org.kde.kitty.desktop]
+      _launch=Meta+Return,none,Launch Kitty
+    '';
+  };
+
+  # Autostart trigger to make sure KWin initializes Krohnkite immediately on login
+  environment.etc."xdg/autostart/enable-krohnkite.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=Enable Krohnkite
+    Exec=qdbus org.kde.KWin /KWin org.kde.KWin.reconfigure
+    OnlyShowIn=KDE;
+  '';
 
   # =========================================================================
   # 4. SHELLS, ENVIRONMENT, & USER ACCOUNT
@@ -195,10 +240,10 @@
   services.flatpak.enable = true;
   
   programs.nh = {
-  enable = true;
-  clean.enable = true;
-  clean.extraArgs = "--keep-since 4d --keep 3";
-  flake = "/etc/nixos"; # Points straight to your flake directory
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/etc/nixos"; # Points straight to your flake directory
   };
 
   # =========================================================================
@@ -222,14 +267,10 @@
     git nano vim wget rsync bc jq cargo uv ripgrep eza kitty fastfetch chafa btop htop starship gum
     wl-clipboard grim slurp swappy wtype ydotool wlsunset cliphist quasselClient openssl
     libqalculate tesseract networkmanagerapplet pavucontrol brightnessctl ddcutil
-    # noctalia-shell
-    # wf-recorder
 
-    # Cosmic Extensions
-    cosmic-ext-applet-caffeine
-    # cosmic-ext-applet-vitals
-    # cosmic-applet-minimon
-    # cosmic-ext-applet-gamemode-status
+    # KDE Tiling Extension
+    kdePackages.krohnkite
+    kdePackages.plasma-integration
 
     # Security & Hacking Tools
     nmap wireshark ffuf gobuster hashcat netcat sbctl
@@ -265,7 +306,6 @@
     device = "/dev/disk/by-uuid/3a04e374-1647-4edd-aa58-f1780af26d82";
     fsType = "ext4";
     options = [ "nofail" ];
-
   };
 
   fileSystems."/mnt/game-nvme" = {
