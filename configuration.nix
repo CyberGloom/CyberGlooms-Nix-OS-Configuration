@@ -86,9 +86,6 @@
     wayland.enable = true;
   };
 
-  # Keep COSMIC enabled for this intermediate build step to prevent crash
-  services.desktopManager.cosmic.enable = true;
-
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     PROTON_USE_WAYLAND = "1";

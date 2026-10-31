@@ -6,7 +6,7 @@ echo "==> Updating Nix flake inputs..."
 sudo nix flake update --flake $nixos_dir; or exit 1
 
 echo "==> Staging changes in Git..."
-git -C $nixos_dir add flake.lock configuration.nix update-system.fish
+git -C $nixos_dir add flake.nix flake.lock configuration.nix update-system.fish
 
 echo "==> Committing changes..."
 git -C $nixos_dir commit -m "chore: auto-update flake inputs and system config"
