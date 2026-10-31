@@ -152,16 +152,16 @@
 
       [org.kde.kitty.desktop]
       _launch=Meta+Return,none,Launch Kitty
-    ''';
-  };
+    '';
 
-  environment.etc."xdg/autostart/enable-krohnkite.desktop".text = ''
-    [Desktop Entry]
-    Type=Application
-    Name=Enable Krohnkite
-    Exec=qdbus org.kde.KWin /KWin org.kde.KWin.reconfigure
-    OnlyShowIn=KDE;
-  '';
+    "xdg/autostart/enable-krohnkite.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=Enable Krohnkite
+      Exec=qdbus org.kde.KWin /KWin org.kde.KWin.reconfigure
+      OnlyShowIn=KDE;
+    '';
+  };
 
   # =========================================================================
   # 4. SHELLS, ENVIRONMENT, & USER ACCOUNT
@@ -223,7 +223,7 @@
     wl-clipboard grim slurp swappy wtype ydotool wlsunset cliphist quasselClient openssl
     libqalculate tesseract networkmanagerapplet pavucontrol brightnessctl ddcutil
 
-    klassy # Window decoration engine for borderless/styled windows
+    klassy
     kdePackages.krohnkite
     kdePackages.plasma-integration
 
