@@ -136,41 +136,6 @@
     '';
   };
 
-  # Force-deploy declarative keybindings directly to the user profile database
-  system.activationScripts.kdeshortcuts = {
-    text = ''
-      install -d -m 700 -o kittie -g users /home/kittie/.config
-      cat << 'EOF' > /home/kittie/.config/kglobalshortcutsrc
-      [kwin]
-      Window Focus Down=Meta+J,none,Switch to Window Below
-      Window Focus Left=Meta+H,none,Switch to Window Left
-      Window Focus Right=Meta+L,none,Switch to Window Right
-      Window Focus Up=Meta+K,none,Switch to Window Above
-      Window Move Down=Meta+Shift+J,none,Move Window Down
-      Window Move Left=Meta+Shift+H,none,Move Window Left
-      Window Move Right=Meta+Shift+L,none,Move Window Right
-      Window Move Up=Meta+Shift+K,none,Move Window Up
-      Window Close=Meta+Q,none,Close Window
-      Toggle Floating=Meta+Shift+Space,none,Toggle Window Floating
-
-      Switch to Desktop 1=Meta+1,none,Switch to Desktop 1
-      Switch to Desktop 2=Meta+2,none,Switch to Desktop 2
-      Switch to Desktop 3=Meta+3,none,Switch to Desktop 3
-      Switch to Desktop 4=Meta+4,none,Switch to Desktop 4
-
-      Window to Desktop 1=Meta+Shift+1,none,Window to Desktop 1
-      Window to Desktop 2=Meta+Shift+2,none,Window to Desktop 2
-      Window to Desktop 3=Meta+Shift+3,none,Window to Desktop 3
-      Window to Desktop 4=Meta+Shift+4,none,Window to Desktop 4
-
-      [org.kde.kitty.desktop]
-      _launch=Meta+Return,none,Launch Kitty
-      EOF
-      chown kittie:users /home/kittie/.config/kglobalshortcutsrc
-      chmod 600 /home/kittie/.config/kglobalshortcutsrc
-    '';
-  };
-
   # =========================================================================
   # 4. SHELLS, ENVIRONMENT, & USER ACCOUNT
   # =========================================================================
