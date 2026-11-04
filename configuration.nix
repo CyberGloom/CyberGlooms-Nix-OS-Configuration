@@ -202,7 +202,7 @@
 
     nmap wireshark ffuf gobuster hashcat netcat sbctl
 
-    firefox fractal mpv playerctl gimp mission-center qbittorrent
+    firefox fractal mpv playerctl mission-center qbittorrent
     smartmontools yt-dlp songrec lmstudio sillytavern legcord upscayl spotify freetube
 
     steam-run mangohud protontricks protonup-qt piper xwayland-satellite prismlauncher heroic lutris
