@@ -5,6 +5,9 @@ set -l nixos_dir "/etc/nixos"
 echo "==> Updating Nix flake inputs..."
 sudo nix flake update --flake $nixos_dir; or exit 1
 
+echo "==> Fixing ownership of updated flake files..."
+sudo chown -R (whoami):users $nixos_dir/flake.lock
+
 echo "==> Staging changes in Git..."
 git -C $nixos_dir add flake.nix flake.lock configuration.nix update-system.fish
 
