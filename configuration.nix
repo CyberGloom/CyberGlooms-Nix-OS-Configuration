@@ -70,8 +70,7 @@
   SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0b05", MODE="0666", TAG+="uaccess"
   '';
 
-  networking.firewall.allowedTCPPorts = [ 8000 ];
-  networking.firewall.allowedTCPPorts = [ 25565 ];
+  networking.firewall.allowedTCPPorts = [ 8000 25565 ];
   networking.firewall.allowedUDPPorts = [ 25565 ];
 
   services.quassel.enable = true;
