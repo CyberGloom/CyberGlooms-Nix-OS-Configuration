@@ -71,6 +71,8 @@
   '';
 
   networking.firewall.allowedTCPPorts = [ 8000 ];
+  networking.firewall.allowedTCPPorts = [ 25565 ];
+  networking.firewall.allowedUDPPorts = [ 25565 ];
 
   services.quassel.enable = true;
   services.quassel.interfaces = [ "127.0.0.1" ];
