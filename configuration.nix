@@ -208,8 +208,6 @@
 
     steam-run mangohud protontricks protonup-qt piper xwayland-satellite prismlauncher heroic
     xemu dolphin-emu lact
-
-    zeroad
   ];
 
   # =========================================================================
