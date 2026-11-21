@@ -146,7 +146,7 @@
   users.users.kittie = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "video" "input" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "input" "gamemode" ];
   };
 
   # =========================================================================
@@ -211,7 +211,24 @@
   ];
 
   # =========================================================================
-  # 9. AUTOMATED HARD DRIVE STORAGE MOUNTS
+  # 9. Security and Permissions
+  # =========================================================================
+
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (action.id == "org.freedesktop.policykit.exec" &&
+          subject.active &&
+          subject.user == "kittie") {
+        var prog = action.lookup("program");
+        if (prog && prog.endsWith("/libexec/cpugovctl")) {
+          return polkit.Result.YES;
+        }
+      }
+    });
+  '';
+
+  # =========================================================================
+  # 10. AUTOMATED HARD DRIVE STORAGE MOUNTS
   # =========================================================================
   fileSystems."/mnt/game-1" = { device = "/dev/disk/by-uuid/40813fc6-ffae-4c19-8655-6afe847d1817"; fsType = "ext4"; options = [ "nofail" ]; };
   fileSystems."/mnt/game-3" = { device = "/dev/disk/by-uuid/d72ac9c3-dffb-4265-b8f7-0ad1b25ebe0f"; fsType = "ext4"; options = [ "nofail" ]; };
