@@ -195,7 +195,7 @@
   environment.systemPackages = with pkgs; [
     git nano vim wget rsync bc jq cargo uv ripgrep eza kitty fastfetch chafa btop htop starship gum
     wl-clipboard grim slurp swappy wtype ydotool wlsunset cliphist quasselClient openssl
-    libqalculate tesseract networkmanagerapplet pavucontrol brightnessctl ddcutil vlc
+    libqalculate tesseract networkmanagerapplet pavucontrol brightnessctl ddcutil vlc ffmpeg
 
     klassy
     kdePackages.krohnkite
